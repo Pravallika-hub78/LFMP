@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cases</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background: #003366;
+            color: white;
+            padding: 15px 20px;
+            font-size: 24px;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .btn-add {
+            background: #007bff;
+            color: white;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-add:hover {
+            background: #0056b3;
+        }
+
+        .search-box input {
+            width: 250px;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #aaa;
+        }
+
+        .filters select {
+            padding: 8px;
+            margin-right: 10px;
+            border-radius: 4px;
+            border: 1px solid #aaa;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background: #003366;
+            color: white;
+            padding: 10px;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        tr:hover {
+            background: #f1f1f1;
+        }
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 16px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="header">Cases</div>
+
+    <div class="container">
+
+        <div class="top-bar">
+            <div class="search-box">
+                <input type="text" placeholder="Search cases...">
+            </div>
+
+            <a href="newcaseform.html" class="+Add New Case-button">+Add New Case</a>
+        </div>
+
+        <div class="filters">
+            <select>
+                <option>All Courts</option>
+                <option>High Court</option>
+                <option>District Court</option>
+                <option>Family Court</option>
+            </select>
+
+            <select>
+                <option>Status: All</option>
+                <option>Active</option>
+                <option>Closed</option>
+            </select>
+
+            <select>
+                <option>Practice Area</option>
+                <option>Civil</option>
+                <option>Criminal</option>
+                <option>Corporate</option>
+            </select>
+        </div>
+
+        <br>
+
+        <table>
+            <tr>
+                <th>Case Title</th>
+                <th>Case Number</th>
+                <th>Client</th>
+                <th>Court</th>
+                <th>Next Hearing</th>
+                <th>Status</th>
+            </tr>
+
+            <tr>
+                <td>ABC vs XYZ</td>
+                <td>WP/1234/2024</td>
+                <td>ABC Pvt Ltd</td>
+                <td>High Court</td>
+                <td>20 Jan 2025</td>
+                <td>Active</td>
+            </tr>
+
+            <tr>
+                <td>John Doe vs State</td>
+                <td>CR/89/2024</td>
+                <td>John Doe</td>
+                <td>District Court</td>
+                <td>12 Feb 2025</td>
+                <td>Active</td>
+            </tr>
+
+        </table>
+
+    </div>
+    <!-- Bottom-Right Back Button -->
+    <a href="dashboard.html" class="back-button">Back</a>
+</body>
+</html>
