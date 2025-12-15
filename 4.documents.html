@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .upload-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        
+        .document-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+
+        .document-table th, .document-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .document-table th {
+            background: #2b79ff;
+            color: white;
+        }
+
+        .btn {
+            padding: 10px 15px;
+            background: #2b79ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #1e5dcc;
+        }
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 16px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Document Manager</h1>
+
+<div class="upload-box">
+    <h3>Upload New Document</h3>
+    <input type="file" id="fileInput">
+    <button class="btn" onclick="addDocument()">Upload</button>
+</div>
+
+<table class="document-table" id="docTable">
+    <tr>
+        <th>File Name</th>
+        <th>Uploaded On</th>
+    </tr>
+</table>
+
+<script>
+function addDocument() {
+    const fileInput = document.getElementById("fileInput");
+    if (!fileInput.files.length) {
+        alert("Please select a file!");
+        return;
+    }
+
+    const file = fileInput.files[0];
+    const table = document.getElementById("docTable");
+
+    const row = table.insertRow(-1);
+    const cell1 = row.insertCell(0);
+    const cell2 = row.insertCell(1);
+
+    cell1.innerHTML = file.name;
+    cell2.innerHTML = new Date().toLocaleString();
+
+    fileInput.value = "";  // Reset file field
+}
+</script>
+<!-- Bottom-Right Back Button -->
+    <a href="dashboard.html" class="back-button">Back</a>
+
+
+</body>
+</html>

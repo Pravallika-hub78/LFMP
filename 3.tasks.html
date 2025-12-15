@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Task Module</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f4f4f4;
+    }
+
+    header {
+        background: #1e88e5;
+        padding: 15px;
+        color: white;
+        text-align: center;
+        font-size: 22px;
+    }
+
+    .container {
+        width: 90%;
+        margin: 20px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    button {
+        padding: 10px 15px;
+        background: #045ead;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #045ead;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background: #045ead;
+        color: white;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    input, select, textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #bbb;
+        border-radius: 5px;
+    }
+
+    .back-btn {
+        background: #555;
+        margin-bottom: 15px;
+    }
+    .back-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 16px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+        }
+
+    .back-button:hover {
+         background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+
+<header>Task Management Module</header>
+
+<div class="container">
+
+    <!-- ---------------- TASK LIST PAGE ---------------- -->
+    <div id="taskListPage">
+        <h2>Task List</h2>
+        <button onclick="showNewTaskForm()">➕ New Task</button>
+
+        <table>
+            <tr>
+                <th>Task</th>
+                <th>Case</th>
+                <th>Assigned To</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+
+            <tr onclick="openTaskDetails('Draft Reply Notice', 'Case A', 'John Doe', 'Pending', 'Draft reply based on client instructions.')">
+                <td>Draft Reply Notice</td>
+                <td>Case A</td>
+                <td>John Doe</td>
+                <td>Pending</td>
+                <td><button>View</button></td>
+            </tr>
+
+            <tr onclick="openTaskDetails('File Affidavit', 'Case B', 'Priya', 'Completed', 'Affidavit filed in court.')">
+                <td>File Affidavit</td>
+                <td>Case B</td>
+                <td>Priya</td>
+                <td>Completed</td>
+                <td><button>View</button></td>
+            </tr>
+        </table>
+    </div>
+
+
+
+    <!-- ---------------- NEW TASK FORM PAGE ---------------- -->
+    <div id="newTaskPage" class="hidden">
+        <button class="back-btn" onclick="goBackToList()">⬅ Back</button>
+        <h2>Create New Task</h2>
+
+        <label>Task Title</label>
+        <input type="text" id="taskTitle">
+
+        <label>Linked Case</label>
+        <select id="taskCase">
+            <option>Case A</option>
+            <option>Case B</option>
+            <option>Case C</option>
+        </select>
+
+        <label>Assign To</label>
+        <select id="taskAssign">
+            <option>John Doe</option>
+            <option>Priya</option>
+            <option>Rohit</option>
+        </select>
+
+        <label>Status</label>
+        <select id="taskStatus">
+            <option>Pending</option>
+            <option>In Progress</option>
+            <option>Completed</option>
+        </select>
+
+        <label>Description</label>
+        <textarea id="taskDesc" rows="4"></textarea>
+
+        <button onclick="saveTask()">Save Task</button>
+    </div>
+
+
+
+    <!-- ---------------- TASK DETAILS PAGE ---------------- -->
+    <div id="taskDetailsPage" class="hidden">
+        <button class="back-btn" onclick="goBackToList()">⬅ Back</button>
+        <h2>Task Details</h2>
+
+        <p><b>Task:</b> <span id="d_title"></span></p>
+        <p><b>Case:</b> <span id="d_case"></span></p>
+        <p><b>Assigned To:</b> <span id="d_assign"></span></p>
+        <p><b>Status:</b> <span id="d_status"></span></p>
+        <p><b>Description:</b></p>
+        <p id="d_desc"></p>
+    </div>
+
+</div>
+
+<script>
+function showNewTaskForm() {
+    document.getElementById("taskListPage").classList.add("hidden");
+    document.getElementById("newTaskPage").classList.remove("hidden");
+}
+
+function goBackToList() {
+    document.getElementById("taskListPage").classList.remove("hidden");
+    document.getElementById("newTaskPage").classList.add("hidden");
+    document.getElementById("taskDetailsPage").classList.add("hidden");
+}
+
+function saveTask() {
+    alert("Task Saved Successfully!");
+    goBackToList();
+}
+
+function openTaskDetails(title, caseName, assign, status, desc) {
+    document.getElementById("taskListPage").classList.add("hidden");
+    document.getElementById("taskDetailsPage").classList.remove("hidden");
+
+    document.getElementById("d_title").innerText = title;
+    document.getElementById("d_case").innerText = caseName;
+    document.getElementById("d_assign").innerText = assign;
+    document.getElementById("d_status").innerText = status;
+    document.getElementById("d_desc").innerText = desc;
+}
+</script>
+<!-- Bottom-Right Back Button -->
+    <a href="dashboard.html" class="back-button">Back</a>
+
+</body>
+</html>

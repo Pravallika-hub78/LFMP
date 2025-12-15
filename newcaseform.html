@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>New Case Form</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f9;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .form-container {
+        max-width: 850px;
+        margin: auto;
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .section-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 25px;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    label {
+        font-weight: 600;
+        margin-top: 10px;
+        display: block;
+    }
+
+    input, select, textarea {
+        width: 100%;
+        margin-top: 5px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 15px;
+    }
+
+    textarea {
+        height: 120px;
+        resize: vertical;
+    }
+
+    .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .btn-row {
+        margin-top: 30px;
+        display: flex;
+        justify-content: flex-end;
+        gap: 15px;
+    }
+
+    button {
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .submit-btn {
+        background: #0066ff;
+        color: white;
+    }
+
+    .cancel-btn {
+        background: #777;
+        color: white;
+    }
+
+    .submit-btn:hover {
+        background: #0050cc;
+    }
+
+    .cancel-btn:hover {
+        background: #555;
+    }
+
+</style>
+</head>
+
+<body>
+
+<h2>Create New Case</h2>
+
+<div class="form-container">
+
+    <!-- Case Information -->
+    <div class="section-title">Case Information</div>
+
+    <div class="two-col">
+        <div>
+            <label>Case Title *</label>
+            <input type="text" placeholder="Enter case title">
+        </div>
+
+        <div>
+            <label>Court *</label>
+            <select>
+                <option>Select Court</option>
+                <option>High Court</option>
+                <option>District Court</option>
+                <option>Family Court</option>
+                <option>Tribunal</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="two-col">
+        <div>
+            <label>Case Type *</label>
+            <select>
+                <option>Select Case Type</option>
+                <option>Civil</option>
+                <option>Criminal</option>
+                <option>Writ</option>
+                <option>Appeal</option>
+                <option>Consumer</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Practice Area *</label>
+            <select>
+                <option>Select Practice Area</option>
+                <option>Litigation</option>
+                <option>Corporate</option>
+                <option>Real Estate</option>
+                <option>Contracts</option>
+                <option>Arbitration</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="two-col">
+        <div>
+            <label>Case Number (Optional)</label>
+            <input type="text" placeholder="Enter court filing number">
+        </div>
+
+        <div>
+            <label>Filing Date *</label>
+            <input type="date">
+        </div>
+    </div>
+
+
+    <!-- Party Information -->
+    <div class="section-title">Party Information</div>
+
+    <label>Client *</label>
+    <select>
+        <option>Select Client</option>
+        <option>Cli
