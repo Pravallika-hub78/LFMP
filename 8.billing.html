@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Billing Module</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6f8;
+    }
+    header {
+      background: #1f2937;
+      color: #fff;
+      padding: 14px 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
+    }
+    /* Tabs */
+    .tabs {
+      display: flex;
+      border-bottom: 2px solid #ddd;
+      margin-bottom: 20px;
+    }
+    .tab {
+      padding: 10px 16px;
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-size: 15px;
+    }
+    .tab.active {
+      border-bottom: 3px solid #2563eb;
+      font-weight: bold;
+      color: #2563eb;
+    }
+    /* Sections */
+    .section {
+      display: none;
+    }
+    .section.active {
+      display: block;
+    }
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .card {
+      background: #fff;
+      padding: 16px;
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    .card h3 {
+      margin: 0 0 6px;
+      font-size: 14px;
+      color: #555;
+    }
+    .card p {
+      margin: 0;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+    }
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #e5e7eb;
+      text-align: left;
+      font-size: 14px;
+    }
+    th {
+      background: #f9fafb;
+    }
+    tr:hover {
+      background: #f1f5f9;
+      cursor: pointer;
+    }
+    /* Status badges */
+    .badge {
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      color: #fff;
+    }
+    .paid { background: #16a34a; }
+    .unpaid { background: #f59e0b; }
+    .overdue { background: #dc2626; }
+    /* Forms */
+    .form {
+      background: #fff;
+      padding: 20px;
+      max-width: 700px;
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    .form-group {
+      margin-bottom: 14px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .form-actions {
+      margin-top: 20px;
+    }
+    .btn {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .btn-primary {
+      background: #2563eb;
+      color: #fff;
+    }
+    .btn-secondary {
+      background: #6b7280;
+      color: #fff;
+      margin-left: 10px;
+    }
+    .back-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #007bff;
+        color: white;
+        padding: 10px 16px;
+        text-decoration: none;
+        border-radius: 6px;
+        font-size: 16px;
+        font-family: Arial, sans-serif;
+    }
+
+    .back-button:hover {
+        background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<header>Billing</header>
+
+<div class="container">
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab active" onclick="openTab('dashboard')">Billing Dashboard</button>
+    <button class="tab" onclick="openTab('invoices')">Invoice List</button>
+    <button class="tab" onclick="openTab('details')">Invoice Details</button>
+    <button class="tab" onclick="openTab('form')">Create Invoice</button>
+  </div>
+
+  <!-- Billing Dashboard -->
+  <div id="dashboard" class="section active">
+    <div class="cards">
+      <div class="card"><h3>Total Revenue</h3><p>₹ 4,50,000</p></div>
+      <div class="card"><h3>Paid Invoices</h3><p>₹ 3,20,000</p></div>
+      <div class="card"><h3>Outstanding</h3><p>₹ 90,000</p></div>
+      <div class="card"><h3>Overdue</h3><p>₹ 40,000</p></div>
+    </div>
+
+    <h3>Recent Invoices</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Invoice #</th>
+          <th>Case</th>
+          <th>Client</th>
+          <th>Amount</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr onclick="openTab('details')">
+          <td>INV-001</td>
+          <td>WP 123/2024</td>
+          <td>ABC Pvt Ltd</td>
+          <td>₹ 50,000</td>
+          <td><span class="badge paid">Paid</span></td>
+        </tr>
+        <tr onclick="openTab('details')">
+          <td>INV-002</td>
+          <td>CS 456/2024</td>
+          <td>John Doe</td>
+          <td>₹ 40,000</td>
+          <td><span class="badge unpaid">Unpaid</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Invoice List -->
+  <div id="invoices" class="section">
+    <h3>Invoice List</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Invoice #</th>
+          <th>Case</th>
+          <th>Client</th>
+          <th>Date</th>
+          <th>Amount</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr onclick="openTab('details')">
+          <td>INV-001</td>
+          <td>WP 123/2024</td>
+          <td>ABC Pvt Ltd</td>
+          <td>10-Jan-2025</td>
+          <td>₹ 50,000</td>
+          <td><span class="badge paid">Paid</span></td>
+        </tr>
+        <tr onclick="openTab('details')">
+          <td>INV-002</td>
+          <td>CS 456/2024</td>
+          <td>John Doe</td>
+          <td>12-Jan-2025</td>
+          <td>₹ 40,000</td>
+          <td><span class="badge overdue">Overdue</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Invoice Details -->
+  <div id="details" class="section">
+    <h3>Invoice Details</h3>
+    <div class="card">
+      <p><strong>Invoice #:</strong> INV-002</p>
+      <p><strong>Case:</strong> CS 456/2024</p>
+      <p><strong>Client:</strong> John Doe</p>
+      <p><strong>Date:</strong> 12-Jan-2025</p>
+      <p><strong>Amount:</strong> ₹ 40,000</p>
+      <p><strong>Status:</strong> <span class="badge overdue">Overdue</span></p>
+    </div>
+  </div>
+
+  <!-- Create Invoice Form -->
+  <div id="form" class="section">
+    <h3>Create Invoice</h3>
+    <div class="form">
+      <div class="form-group">
+        <label>Case</label>
+        <select><option>Select Case</option></select>
+      </div>
+      <div class="form-group">
+        <label>Client</label>
+        <select><option>Select Client</option></select>
+      </div>
+      <div class="form-group">
+        <label>Invoice Date</label>
+        <input type="date" />
+      </div>
+      <div class="form-group">
+        <label>Due Date</label>
+        <input type="date" />
+      </div>
+      <div class="form-group">
+        <label>Amount</label>
+        <input type="number" placeholder="Amount" />
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea rows="3"></textarea>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary">Create Invoice</button>
+        <button class="btn btn-secondary" type="button">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function openTab(tabId) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+
+    document.getElementById(tabId).classList.add('active');
+    event.target.classList.add('active');
+  }
+</script>
+<!-- Bottom-Right Back Button -->
+    <a href="dashboard.html" class="back-button">Back</a>
+
+</body>
+</html>
